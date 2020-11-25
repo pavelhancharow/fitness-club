@@ -12,6 +12,8 @@ import browser from 'cross-browser-polyfill';
 browser();
 
 import dropDownMenu from './modules/dropDownMenu';
+import popupVisit from './modules/popupVisit';
 
 //Drop-down menu
 dropDownMenu();
+popupVisit();
