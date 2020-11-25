@@ -1,0 +1,40 @@
+{
+  "name": "fitness-club",
+  "version": "1.0.0",
+  "description": "Fitness Club \"TELO\"",
+  "main": "index.js",
+  "scripts": {
+    "build": "webpack",
+    "dev": "webpack serve"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/pavelhancharow/fitness-club.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/pavelhancharow/fitness-club/issues"
+  },
+  "homepage": "https://github.com/pavelhancharow/fitness-club#readme",
+  "devDependencies": {
+    "@babel/core": "^7.12.9",
+    "@babel/preset-env": "^7.12.7",
+    "babel-loader": "^8.2.1",
+    "path": "^0.12.7",
+    "webpack": "^5.6.0",
+    "webpack-cli": "^4.2.0",
+    "webpack-dev-server": "^3.11.0"
+  },
+  "dependencies": {
+    "@babel/polyfill": "^7.12.1",
+    "cross-browser-polyfill": "^1.0.5",
+    "element-closest": "^3.0.2",
+    "es6-promise": "^4.2.8",
+    "fetch-polyfill": "^0.8.2",
+    "formdata-polyfill": "^3.0.20",
+    "nodelist-foreach-polyfill": "^1.2.0",
+    "regexp-polyfill": "^1.0.1"
+  }
+}
