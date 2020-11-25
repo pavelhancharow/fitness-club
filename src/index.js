@@ -13,7 +13,9 @@ browser();
 
 import dropDownMenu from './modules/dropDownMenu';
 import popupVisit from './modules/popupVisit';
+import popupCallback from './modules/popupCallback';
 
 //Drop-down menu
 dropDownMenu();
 popupVisit();
+popupCallback();
