@@ -6,7 +6,7 @@ const menuBtn = () => {
     hiddenSmall = document.querySelector('.hidden-small'),
     hiddenLarge = document.querySelector('.hidden-large');
 
-  if (screen.width < 768) {
+  if (document.documentElement.clientWidth < 768) {
     hiddenSmall.style.display = 'none';
     hiddenLarge.style.display = 'block';
 
