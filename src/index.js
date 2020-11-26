@@ -14,7 +14,9 @@ browser();
 import dropDownMenu from './modules/dropDownMenu';
 import togglePopup from './modules/togglePopup';
 import menuBtn from './modules/menuBtn';
+import toTopArrow from './modules/toTopArrow';
 
 dropDownMenu();
 togglePopup();
 menuBtn();
+toTopArrow();
