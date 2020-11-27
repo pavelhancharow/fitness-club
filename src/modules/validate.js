@@ -5,7 +5,6 @@ const validate = () => {
     formInputs = [inputsName, inputsPhone];
 
   formInputs.forEach(item => item.forEach(input => {
-    input.required = false;
     input.addEventListener('input', () => {
 
       input.value = input.value.replace(/[^\S]/gi, '');
