@@ -3,7 +3,7 @@ const sendForm = () => {
     waitingMessage = 'Идет отправка...',
     successMessage = 'Данные успешно отправлены!';
 
-  const forms = document.querySelectorAll('#banner-form, #card_order, #footer_form, #form1, #form2'), //form - у всех тег
+  const forms = document.querySelectorAll('#banner-form, #card_order, #footer_form, #form1, #form2'),
     popups = document.querySelectorAll('.popup');
 
   forms.forEach(form => {
@@ -147,3 +147,5 @@ const sendForm = () => {
     });
   };
 };
+
+export default sendForm;
