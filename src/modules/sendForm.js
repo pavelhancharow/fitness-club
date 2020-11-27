@@ -4,7 +4,15 @@ const sendForm = () => {
     successMessage = 'Данные успешно отправлены!';
 
   const forms = document.querySelectorAll('#banner-form, #card_order, #footer_form, #form1, #form2'),
-    popups = document.querySelectorAll('.popup');
+    popups = document.querySelectorAll('.popup'),
+    mozaika = document.getElementById('mozaika'),
+    schelkovo = document.getElementById('schelkovo');
+
+  if (mozaika) {
+    forms[0].insertAdjacentHTML('afterbegin', `<input type="hidden" name="club_name" value="mozaika">`);
+  } else if (schelkovo) {
+    forms[0].insertAdjacentHTML('afterbegin', `<input type="hidden" name="club_name" value="schelkovo">`);
+  }
 
   forms.forEach(form => {
     const checkboxRequired = form.querySelector('[type = checkbox]');
@@ -66,7 +74,9 @@ const sendForm = () => {
       }
 
       if (inputPromoCode) {
-        inputPromoCode.setAttribute('name', 'promocode');
+        if (inputPromoCode.value.toUpperCase() === 'ТЕЛО2020') {
+          inputPromoCode.setAttribute('name', 'promocode');
+        }
         if (inputPromoCode.value === '') {
           inputPromoCode.style.border = '1px solid red';
           infoMessage('Ошибка', 'Введите ваш промокод', 'block');
@@ -98,9 +108,6 @@ const sendForm = () => {
       if (form.id === 'form1' || form.id === 'form2') {
         formTitleInfo(waitingMessage);
       } else {
-        if (inputPromoCode.value === 'ТЕЛО2020') {
-          infoMessage('Идет отправка...', 'Получение ответа от сервера...', 'block');
-        }
         infoMessage('Идет отправка...', 'Получение ответа от сервера...', 'block');
       }
 
@@ -132,7 +139,7 @@ const sendForm = () => {
             if (input.type === 'checkbox' || input.type === 'radio') {
               input.checked = false;
             }
-            if (input.type === 'tel' || input.name === 'name') {
+            if (input.type === 'tel' || input.name === ('name' || 'promocode')) {
               input.value = '';
             }
           });
