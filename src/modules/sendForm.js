@@ -66,6 +66,7 @@ const sendForm = () => {
       }
 
       if (inputPromoCode) {
+        inputPromoCode.setAttribute('name', 'promocode');
         if (inputPromoCode.value === '') {
           inputPromoCode.style.border = '1px solid red';
           infoMessage('Ошибка', 'Введите ваш промокод', 'block');
@@ -97,6 +98,9 @@ const sendForm = () => {
       if (form.id === 'form1' || form.id === 'form2') {
         formTitleInfo(waitingMessage);
       } else {
+        if (inputPromoCode.value === 'ТЕЛО2020') {
+          infoMessage('Идет отправка...', 'Получение ответа от сервера...', 'block');
+        }
         infoMessage('Идет отправка...', 'Получение ответа от сервера...', 'block');
       }
 
