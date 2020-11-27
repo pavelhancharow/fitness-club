@@ -139,7 +139,7 @@ const sendForm = () => {
             if (input.type === 'checkbox' || input.type === 'radio') {
               input.checked = false;
             }
-            if (input.type === 'tel' || input.name === ('name' || 'promocode')) {
+            if (input.type === 'tel' || input.name === 'name' || input.name === 'promocode') {
               input.value = '';
             }
           });
