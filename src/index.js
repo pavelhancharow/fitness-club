@@ -16,6 +16,7 @@ import togglePopup from './modules/togglePopup';
 import menuBtn from './modules/menuBtn';
 import toTopArrow from './modules/toTopArrow';
 import validate from './modules/validate';
+import calc from './modules/calc';
 import sendForm from './modules/sendForm';
 
 dropDownMenu();
@@ -23,4 +24,5 @@ togglePopup();
 menuBtn();
 toTopArrow();
 validate();
+calc();
 sendForm();
