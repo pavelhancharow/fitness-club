@@ -16,17 +16,17 @@ const togglePopup = () => {
         e.target.style.display = 'none';
       } else if (e.target.matches('.close_icon') || !e.target.closest('.form-content') || e.target.matches('.close-btn')) {
         item.style.display = 'none';
-        forms.forEach(form => {
-          const inputs = form.querySelectorAll('input');
-          inputs.forEach(input => {
-            if (input.type === 'checkbox') {
-              input.checked = false;
-            }
-            if (input.type === 'tel' || input.name === 'name') {
-              input.value = '';
-            }
-          });
-        });
+        // forms.forEach(form => {
+        //   const inputs = form.querySelectorAll('input');
+        //   inputs.forEach(input => {
+        //     if (input.type === 'checkbox') {
+        //       input.checked = false;
+        //     }
+        //     if (input.type === 'tel' || input.name === 'name') {
+        //       input.value = '';
+        //     }
+        //   });
+        // });
       }
     });
   });
