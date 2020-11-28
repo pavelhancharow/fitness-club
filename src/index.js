@@ -18,6 +18,7 @@ import toTopArrow from './modules/toTopArrow';
 import validate from './modules/validate';
 import calc from './modules/calc';
 import sendForm from './modules/sendForm';
+import mainSlider from './modules/mainSlider';
 
 dropDownMenu();
 togglePopup();
@@ -26,3 +27,4 @@ toTopArrow();
 validate();
 calc();
 sendForm();
+mainSlider();
