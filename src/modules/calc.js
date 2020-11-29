@@ -8,7 +8,7 @@ const calc = () => {
 
   let total;
 
-  form.addEventListener('change', () => {
+  form.addEventListener('input', () => {
     if (cardsTypes) {
       return;
     } else {
