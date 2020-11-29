@@ -6,7 +6,6 @@ const validate = () => {
 
   formInputs.forEach(item => item.forEach(input => {
     input.addEventListener('input', () => {
-
       input.value = input.value.replace(/[^\S]/gi, '');
 
       if (input.placeholder === 'Промокод') {
