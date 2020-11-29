@@ -19,6 +19,7 @@ import validate from './modules/validate';
 import calc from './modules/calc';
 import sendForm from './modules/sendForm';
 import mainSlider from './modules/mainSlider';
+import photoGallery from './modules/photoGallery';
 
 dropDownMenu();
 togglePopup();
@@ -28,3 +29,4 @@ validate();
 calc();
 sendForm();
 mainSlider();
+photoGallery();
