@@ -110,11 +110,9 @@ const sendForm = () => {
           infoMessage('Спасибо!', `Ваша заявка отправлена. <br> Мы свяжемся с вами в ближайшее время.`, 'block');
         })
         .catch(error => {
-          setTimeout(() => {
-            popups.forEach(popup => popup.style.display = 'none');
-            infoMessage('Ошибка', 'Свяжитесь с нами по телефону.', 'block');
-            console.warn(error);
-          }, 3000);
+          popups.forEach(popup => popup.style.display = 'none');
+          infoMessage('Ошибка', 'Свяжитесь с нами по телефону.', 'block');
+          console.warn(error);
         })
         .finally(() => {
           clearModal(form, checkbox);
