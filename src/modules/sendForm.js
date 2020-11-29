@@ -1,8 +1,6 @@
-const sendForm = () => {
-  const errorMessage = 'Ошибка. Свяжитесь с нами по телефону.',
-    waitingMessage = 'Идет отправка...',
-    successMessage = 'Данные успешно отправлены!';
+import clearModal from './clearModal';
 
+const sendForm = () => {
   const forms = document.querySelectorAll('#banner-form, #card_order, #footer_form, #form1, #form2'),
     popups = document.querySelectorAll('.popup'),
     mozaika = document.getElementById('mozaika'),
@@ -25,18 +23,13 @@ const sendForm = () => {
 
       const formTitle = form.querySelector('form h4'),
         thanks = document.getElementById('thanks'),
-        inputs = form.querySelectorAll('input'),
         checkboxRequired = form.querySelector('[type = checkbox]'),
         inputPhone = form.querySelector('[type = tel]'),
         inputName = form.querySelector('[placeholder="Ваше имя..."]'),
         inputPromoCode = form.querySelector('[placeholder="Промокод"]'),
         clubName = form.querySelectorAll('[name = club-name]'),
-        cardType = form.querySelectorAll('[name = card-type]');
-
-      const formTitleInfo = (info, size) => {
-        formTitle.textContent = info;
-        formTitle.style.fontSize = `${size}px`;
-      };
+        priceTotal = document.getElementById('price-total'),
+        checkbox = form.querySelectorAll('[for="check2"], [for="check"], [for="check1"], [for="card_check"]');
 
       const infoMessage = (title, text, display) => {
         thanks.querySelector('h4').textContent = title;
@@ -45,28 +38,26 @@ const sendForm = () => {
       };
 
       const closePopUp = () => {
+        if (form.id === 'form1') {
+          formTitle.textContent = 'Обратный звонок';
+        } else if (form.id === 'form2') {
+          formTitle.textContent = 'Записаться на визит';
+        }
+
         popups.forEach(popup => {
-          if (popup.style.display === 'block') {
-            setTimeout(() => {
+          setTimeout(() => {
+            if (form.style.display === 'block') {
               popup.style.display = 'none';
-              if (form.id === 'form1') {
-                formTitleInfo('Обратный звонок', 21);
-              } else if (form.id === 'form2') {
-                formTitleInfo('Записаться на визит', 21);
-              }
-            }, 3000);
-          }
+            } else if (popup.id === 'thanks') {
+              popup.style.display = 'none';
+            }
+          }, 3000);
         });
       };
 
-      if (form.id === 'card_order' || form.id === 'footer_form') {
-        const type = [...cardType],
-          club = [...clubName];
+      if (form.id === 'footer_form') {
+        const club = [...clubName];
         const even = element => element.checked === true;
-        if (type.length && type.some(even) === false) {
-          infoMessage('Ошибка', 'Hеобходимо выбрать тип карты!', 'block');
-          return;
-        }
         if (club.length && club.some(even) === false) {
           infoMessage('Ошибка', 'Hеобходимо выбрать клуб!', 'block');
           return;
@@ -76,37 +67,32 @@ const sendForm = () => {
       if (inputPromoCode) {
         if (inputPromoCode.value.toUpperCase() === 'ТЕЛО2020') {
           inputPromoCode.setAttribute('name', 'promocode');
-        }
-        if (inputPromoCode.value === '') {
-          inputPromoCode.style.border = '1px solid red';
-          infoMessage('Ошибка', 'Введите ваш промокод', 'block');
-          return;
+        } else {
+          inputPromoCode.setAttribute('name', 'name');
         }
       }
 
       if (inputName) {
         if (inputName.value === '') {
           inputName.style.border = '1px solid red';
-          infoMessage('Ошибка', 'Введите ваше имя', 'block');
           return;
         }
       }
 
       if (!inputPhone.value.match(/^[\+]?[0-9]{7,13}$/ig)) {
         inputPhone.style.border = '1px solid red';
-        infoMessage('Ошибка', 'Вы ввели некорректный номер телефона', 'block');
         return;
       }
 
       if (checkboxRequired) {
         if (!checkboxRequired.checked) {
-          infoMessage('Ошибка', 'Hеобходимо подтвердить согласие!', 'block');
+          checkbox.forEach(item => item.classList.add('redborder'));
           return;
         }
       }
 
       if (form.id === 'form1' || form.id === 'form2') {
-        formTitleInfo(waitingMessage);
+        formTitle.textContent = 'Идет отправка...';
       } else {
         infoMessage('Идет отправка...', 'Получение ответа от сервера...', 'block');
       }
@@ -120,29 +106,19 @@ const sendForm = () => {
           if (response.status !== 200) {
             throw new Error('status network not 200.');
           }
-          if (form.id === 'form1' || form.id === 'form2') {
-            formTitleInfo(successMessage, 19);
-          } else {
-            infoMessage('Спасибо!', `Ваша заявка отправлена. <br> Мы свяжемся с вами в ближайшее время.`);
-          }
+          popups.forEach(popup => popup.style.display = 'none');
+          infoMessage('Спасибо!', `Ваша заявка отправлена. <br> Мы свяжемся с вами в ближайшее время.`, 'block');
         })
         .catch(error => {
-          if (form.id === 'form1' || form.id === 'form2') {
-            formTitleInfo(errorMessage, 14);
-          } else {
-            infoMessage('Ошибка', 'Свяжитесь с нами по телефону.');
-          }
+          popups.forEach(popup => popup.style.display = 'none');
+          infoMessage('Ошибка', 'Свяжитесь с нами по телефону.', 'block');
           console.warn(error);
         })
         .finally(() => {
-          inputs.forEach(input => {
-            if (input.type === 'checkbox' || input.type === 'radio') {
-              input.checked = false;
-            }
-            if (input.type === 'tel' || input.name === 'name' || input.name === 'promocode') {
-              input.value = '';
-            }
-          });
+          clearModal(form, checkbox);
+          if (priceTotal) {
+            priceTotal.textContent = 1999;
+          }
           closePopUp();
         });
     });
