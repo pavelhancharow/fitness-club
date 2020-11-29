@@ -1,8 +1,11 @@
+import clearModal from './clearModal';
+
 const togglePopup = () => {
   const popupToggle = document.querySelectorAll('.open-popup, .callback-btn, .fixed-gift, .popup'),
     giftPopup = document.getElementById('gift'),
     forms = document.querySelectorAll('#form2, #form1'),
-    thanks = document.getElementById('thanks');
+    thanks = document.getElementById('thanks'),
+    checkbox = document.querySelectorAll('[for="check2"], [for="check"]');
 
   popupToggle.forEach(item => {
     item.addEventListener('click', (e) => {
@@ -18,15 +21,7 @@ const togglePopup = () => {
       } else if (e.target.matches('.close_icon') || !e.target.closest('.form-content') || e.target.matches('.close-btn')) {
         if (thanks.style.display !== 'block') {
           forms.forEach(form => {
-            const inputs = form.querySelectorAll('input');
-            inputs.forEach(input => {
-              if (input.type === 'checkbox') {
-                input.checked = false;
-              }
-              if (input.type === 'tel' || input.name === 'name') {
-                input.value = '';
-              }
-            });
+            clearModal(form, checkbox);
           });
           item.style.display = 'none';
         } else {
