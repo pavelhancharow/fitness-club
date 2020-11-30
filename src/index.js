@@ -20,6 +20,7 @@ import calc from './modules/calc';
 import sendForm from './modules/sendForm';
 import mainSlider from './modules/mainSlider';
 import photoGallery from './modules/photoGallery';
+import sliderCarousel from './modules/sliderCarousel';
 
 dropDownMenu();
 togglePopup();
@@ -30,3 +31,4 @@ calc();
 sendForm();
 mainSlider();
 photoGallery();
+sliderCarousel();
