@@ -1,11 +1,21 @@
-Fitness Club "TELO"
+# "Fitness Club - TELO" 
 
-Дипломный проект для практики на курсе JavaScript от Glo Academy. Автор курса — Максим Лескин.
+## Thesis project for practice on the JavaScript course from Glo Academy.
 
-Проект выполняет
+### Tasks:
 
-Павел Гончаров. Пятнадцатый поток курса JavaScript. Тариф "Полный фарш" с куратором.
+- Native JS, CommonJS;
 
-Заказчик
+- Open/Close Modals, Menu;
 
-Анна Понявина
+- Calculator, Slider, Slider-Carousel, Tabs, Send Forms, Validation Forms;
+
+### Libraries & Plugins:
+
+- Native JS, fetch API, Webpack, Babel
+
+### Links:
+
+[https://pavelhancharow.github.io/fitness-club/](https://pavelhancharow.github.io/fitness-club/)
+
+[https://pavelhancharou.ru/fitness-club/](https://pavelhancharou.ru/fitness-club/)
